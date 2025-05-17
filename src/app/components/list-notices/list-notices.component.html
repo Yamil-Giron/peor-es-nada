@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listado de Avisos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/create-notice">Crear Aviso</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="notices && notices.length; else noAvisos">
+    <ion-item *ngFor="let notice of notices">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ notice.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ notice.description }}</p>
+          <p>Fecha: {{ notice.date | dateFormat }}</p>
+          <img *ngIf="notice.image" [src]="notice.image" style="width: 100%; max-height: 200px; object-fit: cover;" />
+        </ion-card-content>
+        <ion-item lines="none">
+          <ion-button color="danger" (click)="confirmDelete(notice.id)">Eliminar</ion-button>
+        </ion-item>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <ng-template #noAvisos>
+    <ion-text color="medium" class="ion-text-center">
+      <h2>No hay avisos para mostrar</h2>
+    </ion-text>
+  </ng-template>
+</ion-content>

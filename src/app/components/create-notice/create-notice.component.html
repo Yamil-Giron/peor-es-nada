@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Aviso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="noticeForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input formControlName="title" placeholder="Ingrese el título"></ion-input>
+    </ion-item>
+    <div *ngIf="submitted && f['title'].errors" class="error-message">
+      <ion-text color="danger" *ngIf="f['title'].errors['required']">El título es obligatorio.</ion-text>
+      <ion-text color="danger" *ngIf="f['title'].errors['minlength']">Mínimo 5 caracteres.</ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea formControlName="description" placeholder="Ingrese la descripción"></ion-textarea>
+    </ion-item>
+    <div *ngIf="submitted && f['description'].errors" class="error-message">
+      <ion-text color="danger" *ngIf="f['description'].errors['required']">La descripción es obligatoria.</ion-text>
+      <ion-text color="danger" *ngIf="f['description'].errors['minlength']">Mínimo 20 caracteres.</ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label>Foto</ion-label>
+      <ion-button (click)="capturePhoto()">Capturar</ion-button>
+    </ion-item>
+    <div *ngIf="photo" class="ion-text-center">
+      <img [src]="photo" style="height:150px; margin:10px auto; display:block;" />
+    </div>
+
+    <ion-button expand="full" type="submit">Guardar Aviso</ion-button>
+  </form>
+</ion-content>

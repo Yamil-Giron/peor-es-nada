@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss(false)">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>{{ message }}</p>
+  <ion-button expand="full" color="danger" (click)="dismiss(true)">Confirmar</ion-button>
+  <ion-button expand="full" (click)="dismiss(false)">Cancelar</ion-button>
+</ion-content>
