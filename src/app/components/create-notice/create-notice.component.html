@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- El defaultHref asegura que si no hay historial, se redirija a list-notices -->
+      <ion-back-button defaultHref="/list-notices" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
     <ion-title>Crear Aviso</ion-title>
   </ion-toolbar>
 </ion-header>
